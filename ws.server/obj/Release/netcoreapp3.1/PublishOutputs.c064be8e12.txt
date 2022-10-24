@@ -1,0 +1,7 @@
+C:\Users\Centrric\Documents\websocketserver\websocketserver\ws.server\obj\Release\netcoreapp3.1\PubTmp\Out\ws.server.exe
+C:\Users\Centrric\Documents\websocketserver\websocketserver\ws.server\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
+C:\Users\Centrric\Documents\websocketserver\websocketserver\ws.server\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
+C:\Users\Centrric\Documents\websocketserver\websocketserver\ws.server\obj\Release\netcoreapp3.1\PubTmp\Out\ws.server.dll
+C:\Users\Centrric\Documents\websocketserver\websocketserver\ws.server\obj\Release\netcoreapp3.1\PubTmp\Out\ws.server.deps.json
+C:\Users\Centrric\Documents\websocketserver\websocketserver\ws.server\obj\Release\netcoreapp3.1\PubTmp\Out\ws.server.runtimeconfig.json
+C:\Users\Centrric\Documents\websocketserver\websocketserver\ws.server\obj\Release\netcoreapp3.1\PubTmp\Out\ws.server.pdb

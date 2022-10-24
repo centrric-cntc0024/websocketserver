@@ -5,11 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace ws.server
 {
@@ -32,6 +34,9 @@ namespace ws.server
             app.UseRouting();
             var wsOptions = new WebSocketOptions { KeepAliveInterval = TimeSpan.FromSeconds(120) };
             app.UseWebSockets(wsOptions);
+
+            string messages = "";
+
             app.Use(async (context, next) =>
             {
                 if (context.Request.Path =="/send")
@@ -40,7 +45,7 @@ namespace ws.server
                     {
                         using (WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync())
                         {
-                            await Send(context, webSocket);
+                            await Send(context, webSocket, messages);
                         }
                     }
                     else
@@ -59,18 +64,48 @@ namespace ws.server
                 });
             });
         }
-        private async Task Send(HttpContext context,WebSocket webSocket)
+
+        private Timer timer = new Timer();
+        //public void Init()
+        //{
+        //    timer.Interval = 5000; // every 5 seconds
+        //    timer.Tick += new EventHandler(timer_Tick);
+        //    timer.Enabled = true;
+        //}
+        void timer_Tick(object sender, EventArgs e)
         {
+            Console.WriteLine("This event will happen every 5 seconds");
+        }
+
+        private async Task Send(HttpContext context,WebSocket webSocket,string messages)
+        {
+            
+
             var buffer = new byte[1024 * 4];
+
             WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
             if(result!=null)
             {
                 while(!result.CloseStatus.HasValue)
                 {
                     string msg = Encoding.UTF8.GetString(new ArraySegment<byte>(buffer, 0, result.Count));
-                    Console.WriteLine($"client says:{ msg}");
-                    await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes($"server says:{ DateTime.UtcNow:f} ")), result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
+                    messages = messages + $" {msg}";
+
+                    var startTimeSpan = TimeSpan.Zero;
+                    var periodTimeSpan = TimeSpan.FromSeconds(10);
+
+                    var timer = new System.Threading.Timer((e) =>
+                    {
+                       webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes($"server says:{DateTime.UtcNow:f} {messages} ")), result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
+                    }, null, startTimeSpan, periodTimeSpan);
+
+                   // await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes($"server says:{DateTime.UtcNow:f} {messages} ")), result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
+
+                    //Console.WriteLine($"client says:{messages}");
+                    //Debug.WriteLine($"client says:{messages}");
+                    //await webSocket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes($"server says:{ DateTime.UtcNow:f} {messages} ")), result.MessageType, result.EndOfMessage, System.Threading.CancellationToken.None);
                     result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
+
 
 
                 }

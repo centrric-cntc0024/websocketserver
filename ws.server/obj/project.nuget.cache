@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eQYm8Y8gfGE8pPuYiZrFgxMqBG14AzTiiqpieCabFwRh6hinEGeQJD8p1OWXSMjOzxmljhbh51tqMX/oHc6NJQ==",
+  "dgSpecHash": "auPOiy45ZNouqLWDl0gNsxVEB43KOAcwgczlZx9EFAFZW7S2qydRs31ZTaL217IEqi3La7elUDW+n4NK69OKiQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bhagya\\source\\repos\\ws.server\\ws.server\\ws.server.csproj",
+  "projectFilePath": "C:\\Users\\Centrric\\Documents\\websocketserver\\websocketserver\\ws.server\\ws.server.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
