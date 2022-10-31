@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Centrric\\Documents\\websocketserver\\websocketserver\\ws.server\\ws.server.csproj": {}
+    "C:\\Users\\Centrric\\Desktop\\websocketserver\\websocketserver\\ws.server\\ws.server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Centrric\\Documents\\websocketserver\\websocketserver\\ws.server\\ws.server.csproj": {
+    "C:\\Users\\Centrric\\Desktop\\websocketserver\\websocketserver\\ws.server\\ws.server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Centrric\\Documents\\websocketserver\\websocketserver\\ws.server\\ws.server.csproj",
+        "projectUniqueName": "C:\\Users\\Centrric\\Desktop\\websocketserver\\websocketserver\\ws.server\\ws.server.csproj",
         "projectName": "ws.server",
-        "projectPath": "C:\\Users\\Centrric\\Documents\\websocketserver\\websocketserver\\ws.server\\ws.server.csproj",
+        "projectPath": "C:\\Users\\Centrric\\Desktop\\websocketserver\\websocketserver\\ws.server\\ws.server.csproj",
         "packagesPath": "C:\\Users\\Centrric\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Centrric\\Documents\\websocketserver\\websocketserver\\ws.server\\obj\\",
+        "outputPath": "C:\\Users\\Centrric\\Desktop\\websocketserver\\websocketserver\\ws.server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -46,6 +46,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "SqlTableDependency": {
+              "target": "Package",
+              "version": "[8.5.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
